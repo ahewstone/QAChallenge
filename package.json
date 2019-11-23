@@ -1,0 +1,9 @@
+{
+  "name": "qa-challenge",
+  "version": "1.0.0",
+  "description": "QA Automater Challenge using TestCafe and Cucumber",
+  "author": "Alejandra Hewstone",
+  "dependencies": {
+    "testcafe": "^1.6.1"
+  }
+}
