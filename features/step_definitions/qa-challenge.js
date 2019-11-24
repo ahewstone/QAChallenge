@@ -21,7 +21,7 @@ When('Selecciono la opción de Tottus Nataniel', async function() {
 When('Espero que aparezca la sección de {string}', async function(text) {
     try {
         var recipeIcon =  Selector('#new_tottus_nav_cliente_recetas').with({boundTestRun: testController});
-        await testController.expect(recipeIcon.innerText).contains(text);  
+        await testController.expect(recipeIcon.innerText).contains(text); 
     } catch (error){}
 });
 
@@ -35,12 +35,26 @@ When('Selecciono la opción de Dificultad alta', async function(){
 });
 
 When('Espero a que la receta {string} cargue', async function(text) {
-        var recipeBox =  Selector('.card-desc').with({boundTestRun: testController});
-        await testController.expect(recipeBox.exists).ok();  
+        try {
+            var recipeIcon =  Selector('h3').withExactText(text).with({boundTestRun: testController});
+            await testController.expect(recipeIcon.innerText).contains(text); 
+        } catch (error){}
 
 });
 
-When ('Selecciona la opción {string}',async function(text){
-    const recipe = Selector('.card-desc').innerText.contains(text)
+When ('Selecciono la opción {string}',async function(text){
+    const recipe = Selector('h3').withExactText(text).with({boundTestRun: testController});
     await testController.click(recipe);
 });
+
+Then('Verifico que la receta contenga {string}', async function(text){
+    const ingredients =  Selector('.divRecipe').find('p').nth(2).with({boundTestRun: testController}).innerText;
+    await testController.expect(ingredients).contains(text);
+
+}); 
+
+Then('Verifico que la receta también contenga {string}', async function(text){
+    const ingredients =  Selector('.divRecipe').find('p').nth(3).with({boundTestRun: testController}).innerText;
+    await testController.expect(ingredients).contains(text);
+
+}); 
