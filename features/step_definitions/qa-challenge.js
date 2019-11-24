@@ -47,7 +47,7 @@ When ('Selecciono la opción {string}',async function(text){
     await testController.click(recipe);
 });
 
-Then('Verifico que la receta contenga {string}', async function(text){
+/* Then('Verifico que la receta contenga {string}', async function(text){
     const ingredients =  Selector('.divRecipe').find('p').nth(2).with({boundTestRun: testController}).innerText;
     await testController.expect(ingredients).contains(text);
 
@@ -57,4 +57,18 @@ Then('Verifico que la receta también contenga {string}', async function(text){
     const ingredients =  Selector('.divRecipe').find('p').nth(3).with({boundTestRun: testController}).innerText;
     await testController.expect(ingredients).contains(text);
 
-}); 
+}); */
+
+Then ('Verifico que la receta contenga {string}',async function(text){
+    var recipeBox =  Selector('.divRecipe').with({boundTestRun: testController}).find('p');
+    var count    = await recipeBox.count;
+    var expectedValue = '';
+    for(let i = 0; i< count ; i++){
+       var ppp =  await recipeBox.nth(i).textContent;
+       if(ppp.includes(text)){
+        expectedValue = text;
+            break;
+       }    
+    }
+    await testController.expect(expectedValue).contains(text);
+});

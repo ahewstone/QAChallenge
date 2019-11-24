@@ -36,6 +36,8 @@ Material utilizado para construir el proyecto
     npm install
 3. Correr el siguiente comando:
     node_modules/cucumber/bin/cucumber-js
+    
+NOTA: El proyecto está diseñado para correr en Chrome
 
 *************************
 Observaciones importantes
@@ -44,5 +46,5 @@ Observaciones importantes
 técnico en la página principal de https://www.tottus.cl/tottus/ la cual contiene un error
 de JS y por lo que se tuvo que añadir la excepción .run({skipJsErrors:true}) 
 dentro el run() ubicado en el archivo hooks.js 
-Esto no es una bueno practica ya que realmente salta un error de la página, pero se 
-hizo para poder ejecutar el desafío planteado.
+Esto no es una buena practica ya que realmente salta un error de la página, pero se 
+hizo así para poder ejecutar el desafío planteado.

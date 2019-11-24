@@ -14,4 +14,4 @@ And Selecciono la opción de Dificultad alta
 And Espero a que la receta "Corona de rollitos de canela" cargue
 And Selecciono la opción "CORONA DE ROLLITOS DE CANELA"
 Then Verifico que la receta contenga "azúcar rubia"
-And Verifico que la receta también contenga "canela"
+And Verifico que la receta contenga "canela"
